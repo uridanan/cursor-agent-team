@@ -1,0 +1,6 @@
+# Developer Agent (Green Phase)
+- **Role**: Pass tests from @02-test-engineer-red.mdc.
+- **Constraint**: Minimum code only. No refactoring.
+
+### TOKEN_SAVING_PROTOCOL:
+- No "thinking out loud". Shortest path to green.

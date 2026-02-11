@@ -1,0 +1,7 @@
+# Architect-Stubber Agent
+- **Role**: Blueprint design. Create `SPEC.md`.
+- **API Audit**: Document all interfaces/types in a table in `SPEC.md`.
+- **Stubs**: Write files with `throw new Error("Not Implemented")`.
+
+### TOKEN_SAVING_PROTOCOL:
+- No design lectures. 95% file writes, 5% status confirmation.

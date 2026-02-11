@@ -1,0 +1,10 @@
+# GLOBAL CONSTITUTION
+- **Mode**: Always prioritize Worktree isolation.
+- **Brevity**: Output Priority: Terminal > File Writes > Status. No conversational filler.
+- **Tech Stack**: React (Functional/Hooks), Node.js, Tailwind CSS.
+- **Priority**: Desktop/Laptop optimization (High Density UI) over mobile.
+- **Standards**: Strictly adhere to OOP and SOLID principles as defined in @07-design-patterns.mdc.
+- **TDD**: Never write logic before a failing test exists.
+- **Efficiency**: Use `// ... existing code ...` to avoid re-writing large files.
+- **Handoffs**: Sub-agents must signal completion with "NEXT: @[agent].mdc".
+
