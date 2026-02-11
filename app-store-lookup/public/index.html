@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Store Lookup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="layout">
+    <header class="header">
+      <h1 class="title">App Lookup</h1>
+      <p class="subtitle">Paste a Google Play or App Store link to get app details</p>
+    </header>
+
+    <form class="form" id="form">
+      <div class="input-wrap">
+        <input
+          type="url"
+          id="url"
+          class="input"
+          placeholder="https://play.google.com/store/apps/details?id=… or https://apps.apple.com/app/id…"
+          autocomplete="url"
+          required
+        />
+        <button type="submit" class="btn" id="submit">Look up</button>
+      </div>
+      <p class="hint" id="hint"></p>
+    </form>
+
+    <section class="result" id="result" hidden>
+      <div class="result-card">
+        <div class="app-header">
+          <img id="icon" class="icon" src="" alt="App icon" />
+          <div class="app-meta">
+            <h2 id="app-name" class="app-name"></h2>
+            <p id="bundle-id" class="bundle-id"></p>
+          </div>
+        </div>
+        <p id="description" class="description"></p>
+        <div class="developer">
+          <h3 class="developer-title">Developer</h3>
+          <dl class="developer-list">
+            <div class="developer-row">
+              <dt>Name</dt>
+              <dd id="dev-name"></dd>
+            </div>
+            <div class="developer-row" id="row-website">
+              <dt>Website</dt>
+              <dd><a id="dev-website" href="" target="_blank" rel="noopener"></a></dd>
+            </div>
+            <div class="developer-row" id="row-email">
+              <dt>Email</dt>
+              <dd><a id="dev-email" href=""></a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <div class="error" id="error" hidden>
+      <p id="error-text"></p>
+    </div>
+
+    <div class="loading" id="loading" hidden>
+      <span class="spinner"></span>
+      <span>Fetching app details…</span>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
