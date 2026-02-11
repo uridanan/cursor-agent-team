@@ -7,4 +7,5 @@
 - **TDD**: Never write logic before a failing test exists.
 - **Efficiency**: Use `// ... existing code ...` to avoid re-writing large files.
 - **Handoffs**: Sub-agents must signal completion with "NEXT: @[agent].mdc".
+- **Environment**: Full Dockerization required. All services must be accessible via docker-compose. Refer to @08-devops-infrastructure.mdc.
 
