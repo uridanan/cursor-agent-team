@@ -18,7 +18,7 @@
 - [x] 03-developer-green: downloadAppIcon implementation; AppLookupPage icon wrap (hover, click, inject)
 - [x] 04-qa-agent: full suite 14/14 PASS, QA_REPORT.md updated
 - [x] 05-refactor-blue: REFACTOR_NOTES.md (inject D, util S)
-- [x] PR: see below
+- [x] PR: branch pushed; create via [Open PR](https://github.com/uridanan/cursor-agent-team/pull/new/feature/download-icon) (title: `feat: download icon`, body: Agentic TDD Audit Trail with links to SPEC, RED_TEST_REPORT, QA_REPORT, REFACTOR_NOTES)
 
 ## Audit Reports
 
