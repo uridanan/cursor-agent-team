@@ -1,12 +1,12 @@
-# Task Log: App Store Lookup Web App
+# Task Log: Download app icon
 
-- [x] 01-architect-stubber: SPEC.md, API table, infra checklist, stubs
-- [x] 02-test-engineer-red: tests in backend/tests/ and frontend src, RED_TEST_REPORT.md
-- [x] 03-developer-green: implementations (factory, Google Play, Apple, controller, hook, page)
-- [x] 04-qa-agent: full suite, QA_REPORT.md (PASS)
-- [x] 05-refactor-blue: shortDescription util, error handling, REFACTOR_NOTES.md
-- [ ] Git branch: skipped (worktree refs issue)
-- [ ] PR: run `gh pr create --title "feat: app store lookup web app" --body "## Agentic TDD Audit Trail\n- [Design Spec](./SPEC.md)\n- [Red Report](./RED_TEST_REPORT.md)\n- [QA Report](./QA_REPORT.md)\n- [Refactor Log](./REFACTOR_NOTES.md)"`
+- [x] 01-architect-stubber: SPEC.md updated (downloadAppIcon API, AppLookupPage behavior, infra note); stub `frontend/src/utils/iconDownload.js`
+- [x] 02-test-engineer-red: iconDownload.test.js (3 tests), AppLookupPage.test.jsx (2 new tests); RED_TEST_REPORT.md updated
+- [x] 03-developer-green: downloadAppIcon implementation; AppLookupPage icon as button with hover + click
+- [x] 04-qa-agent: full suite (backend + frontend) PASS; QA_REPORT.md updated
+- [x] 05-refactor-blue: REFACTOR_NOTES.md updated (download icon section)
+- [x] Git branch: `feature/download-icon-tbr` (created; `feature/download-app-icon` in use by other worktree)
+- [ ] PR: run `gh pr create --title "feat: download app icon" --body "## Agentic TDD Audit Trail\n- [Design Spec](./SPEC.md)\n- [Red Report](./RED_TEST_REPORT.md)\n- [QA Report](./QA_REPORT.md)\n- [Refactor Log](./REFACTOR_NOTES.md)"`
 
 ## Audit Reports
 
