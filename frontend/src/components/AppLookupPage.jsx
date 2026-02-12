@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useAppLookup } from '../hooks/useAppLookup';
+import { downloadAppIcon as defaultDownloadAppIcon } from '../utils/iconDownload';
 
-export function AppLookupPage() {
+export function AppLookupPage({ downloadAppIcon = defaultDownloadAppIcon }) {
   const { fetchApp, result, error } = useAppLookup();
   const [url, setUrl] = useState('');
 
@@ -30,7 +31,20 @@ export function AppLookupPage() {
       {result && (
         <article className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
           <div className="flex gap-4 mb-4">
-            <img src={result.iconUrl} alt="" className="w-20 h-20 rounded-2xl object-cover" />
+            <a
+              href={result.iconUrl}
+              download
+              title="Download icon"
+              onClick={(e) => {
+                e.preventDefault();
+                const ext = (result.iconUrl || '').toLowerCase().includes('.jpg') || (result.iconUrl || '').toLowerCase().includes('.jpeg') ? 'jpg' : 'png';
+                downloadAppIcon(result.iconUrl, result.name, ext);
+              }}
+              className="cursor-pointer block rounded-2xl ring-0 transition hover:ring-2 hover:ring-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-400"
+              aria-label="Download app icon"
+            >
+              <img src={result.iconUrl} alt="" className="w-20 h-20 rounded-2xl object-cover pointer-events-none" />
+            </a>
             <div>
               <h2 className="text-lg font-semibold">{result.name}</h2>
               <p className="text-stone-500 text-sm font-mono">{result.bundleId}</p>
