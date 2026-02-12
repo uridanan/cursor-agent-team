@@ -1,13 +1,23 @@
 import { useState } from 'react';
 import { useAppLookup } from '../hooks/useAppLookup';
+import { IconDownloadService } from '../services/IconDownloadService';
 
-export function AppLookupPage() {
+const defaultIconDownloadService = new IconDownloadService();
+
+/**
+ * @param {{ iconDownloadService?: import('../services/IIconDownloadService.js').IIconDownloadService }}
+ */
+export function AppLookupPage({ iconDownloadService = defaultIconDownloadService }) {
   const { fetchApp, result, error } = useAppLookup();
   const [url, setUrl] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
     if (url.trim()) fetchApp(url.trim());
+  }
+
+  function handleIconClick() {
+    if (result) iconDownloadService.download(result.iconUrl, result.name);
   }
 
   return (
@@ -30,7 +40,15 @@ export function AppLookupPage() {
       {result && (
         <article className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
           <div className="flex gap-4 mb-4">
-            <img src={result.iconUrl} alt="" className="w-20 h-20 rounded-2xl object-cover" />
+            <button
+              type="button"
+              onClick={handleIconClick}
+              className="cursor-pointer rounded-2xl p-0 border-0 bg-transparent focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2"
+              title="Download icon"
+              aria-label="Download app icon"
+            >
+              <img src={result.iconUrl} alt="" className="w-20 h-20 rounded-2xl object-cover" />
+            </button>
             <div>
               <h2 className="text-lg font-semibold">{result.name}</h2>
               <p className="text-stone-500 text-sm font-mono">{result.bundleId}</p>

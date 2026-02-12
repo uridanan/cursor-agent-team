@@ -14,8 +14,10 @@ Web app: input = Google Play or App Store URL; output = app icon, name, bundle I
 | Service | `AppleAppStoreLookupService` | implements `IAppStoreLookupService` | App Store implementation |
 | Service | `AppStoreLookupServiceFactory` | `getService(url: string): IAppStoreLookupService` | Returns correct service by URL |
 | Backend | `LookupController` | `lookup(req, res)` | HTTP handler for /api/lookup |
-| Frontend | `AppLookupPage` | (component) | Page: input URL, display result |
+| Frontend | `AppLookupPage` | (component) | Page: input URL, display result; icon hover = download evident, click = download |
 | Frontend | `useAppLookup` | (hook) `(url) => { fetch, result, error }` | Encapsulates API call + state |
+| Frontend | `IIconDownloadService` | (interface) `download(iconUrl: string, appName: string): Promise<void>` | Triggers save of icon as \<app name\>.jpg or .png |
+| Frontend | `IconDownloadService` | implements `IIconDownloadService` | Fetches icon URL, triggers browser download with sanitized filename |
 
 ## Environment Variables
 
@@ -44,3 +46,9 @@ Web app: input = Google Play or App Store URL; output = app icon, name, bundle I
 
 ## Short Description Rule
 Backend truncates description to 2–3 lines (e.g. first ~200 chars or first 3 newline-separated segments).
+
+## Icon Download
+- After lookup returns, user can download the app icon.
+- Hover over icon: download possibility evident (cursor, visual cue).
+- Click on icon: triggers download. Filename: `<app name>.jpg` or `<app name>.png` (extension from icon URL or default .png).
+- No backend change; client-side only. No new env vars or Docker changes.

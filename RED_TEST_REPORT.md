@@ -4,15 +4,23 @@
 
 | Test Suite | Test Case | Result | Evidence |
 |------------|-----------|--------|----------|
-| LookupController | lookup with body { url } sends 200 and app info shape | FAIL | `Error: Not Implemented` at LookupController.js:6 |
-| AppStoreLookupServiceFactory | getService(googlePlayUrl) returns instance of GooglePlayLookupService | FAIL | `Error: Not Implemented` at AppStoreLookupServiceFactory.js:9 |
-| AppStoreLookupServiceFactory | getService(appleUrl) returns instance of AppleAppStoreLookupService | FAIL | `Error: Not Implemented` at AppStoreLookupServiceFactory.js:9 |
-| GooglePlayLookupService | getAppInfo returns object with iconUrl, name, bundleId, shortDescription, developer | FAIL | `Error: Not Implemented` at GooglePlayLookupService.js:10 |
-| AppleAppStoreLookupService | getAppInfo returns object with iconUrl, name, bundleId, shortDescription, developer | FAIL | `Error: Not Implemented` at AppleAppStoreLookupService.js:10 |
-| AppLookupPage | renders url input and submit button | FAIL | `Error: Not Implemented` at AppLookupPage.jsx:2 |
-| useAppLookup | returns fetchApp, result, and error | FAIL | `Error: Not Implemented` at useAppLookup.js:5 |
+| LookupController | lookup with body { url } sends 200 and app info shape | PASS | (existing) |
+| AppStoreLookupServiceFactory | getService(googlePlayUrl) returns instance of GooglePlayLookupService | PASS | (existing) |
+| ... | (existing backend/frontend) | ... | ... |
+| **IconDownloadService** | fetches iconUrl and triggers download with sanitized app name and extension | FAIL | `Error: Not Implemented` at IconDownloadService.js:11 |
+| **IconDownloadService** | uses .jpg when icon URL suggests jpeg | FAIL | `Error: Not Implemented` at IconDownloadService.js:11 |
+| **AppLookupPage** | shows icon with download affordance when result is present | FAIL | `expected false to be true` (no cursor-pointer/title/aria-label on wrapper) |
+| **AppLookupPage** | clicking icon calls download with result iconUrl and name | FAIL | (depends on affordance; would fail before impl) |
+
+## Feature: Download App Icon (Red Phase)
+
+| Test | Result | Evidence |
+|------|--------|----------|
+| IconDownloadService: fetches iconUrl and triggers download with sanitized app name and extension | FAIL | `Error: Not Implemented` |
+| IconDownloadService: uses .jpg when icon URL suggests jpeg | FAIL | `Error: Not Implemented` |
+| AppLookupPage: shows icon with download affordance when result is present | FAIL | AssertionError: hasPointer \|\| hasTitle \|\| hasAria |
+| AppLookupPage: clicking icon calls download with result iconUrl and name | FAIL | mockDownload not called (no clickable wrapper yet) |
 
 ## Summary
 
-- Backend: 5 tests failed (stubs throw "Not Implemented").
-- Frontend: 2 tests failed (stubs throw "Not Implemented").
+- Icon download feature: 4 new tests written; all fail (stub throws or UI not implemented).
