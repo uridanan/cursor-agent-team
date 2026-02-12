@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAppLookup } from '../hooks/useAppLookup';
+import { downloadAppIcon } from '../utils/iconDownload';
 
 export function AppLookupPage() {
   const { fetchApp, result, error } = useAppLookup();
@@ -30,7 +31,15 @@ export function AppLookupPage() {
       {result && (
         <article className="rounded-xl border border-stone-200 bg-white p-6 shadow-sm">
           <div className="flex gap-4 mb-4">
-            <img src={result.iconUrl} alt="" className="w-20 h-20 rounded-2xl object-cover" />
+            <button
+              type="button"
+              onClick={() => downloadAppIcon(result.iconUrl, result.name)}
+              className="relative w-20 h-20 rounded-2xl overflow-hidden ring-0 hover:ring-2 hover:ring-stone-400 focus:ring-2 focus:ring-stone-400 focus:outline-none transition-shadow cursor-pointer"
+              title="Download icon"
+              aria-label="Download icon"
+            >
+              <img src={result.iconUrl} alt="" className="w-full h-full object-cover" />
+            </button>
             <div>
               <h2 className="text-lg font-semibold">{result.name}</h2>
               <p className="text-stone-500 text-sm font-mono">{result.bundleId}</p>

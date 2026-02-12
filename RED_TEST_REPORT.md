@@ -1,18 +1,26 @@
 # Red Test Report
 
-## Test Cases
+## Test Cases (baseline – prior implementations)
 
 | Test Suite | Test Case | Result | Evidence |
 |------------|-----------|--------|----------|
-| LookupController | lookup with body { url } sends 200 and app info shape | FAIL | `Error: Not Implemented` at LookupController.js:6 |
-| AppStoreLookupServiceFactory | getService(googlePlayUrl) returns instance of GooglePlayLookupService | FAIL | `Error: Not Implemented` at AppStoreLookupServiceFactory.js:9 |
-| AppStoreLookupServiceFactory | getService(appleUrl) returns instance of AppleAppStoreLookupService | FAIL | `Error: Not Implemented` at AppStoreLookupServiceFactory.js:9 |
-| GooglePlayLookupService | getAppInfo returns object with iconUrl, name, bundleId, shortDescription, developer | FAIL | `Error: Not Implemented` at GooglePlayLookupService.js:10 |
-| AppleAppStoreLookupService | getAppInfo returns object with iconUrl, name, bundleId, shortDescription, developer | FAIL | `Error: Not Implemented` at AppleAppStoreLookupService.js:10 |
-| AppLookupPage | renders url input and submit button | FAIL | `Error: Not Implemented` at AppLookupPage.jsx:2 |
-| useAppLookup | returns fetchApp, result, and error | FAIL | `Error: Not Implemented` at useAppLookup.js:5 |
+| LookupController | lookup with body { url } sends 200 and app info shape | PASS | (implemented) |
+| AppStoreLookupServiceFactory | getService(googlePlayUrl) / getService(appleUrl) | PASS | (implemented) |
+| GooglePlayLookupService / AppleAppStoreLookupService | getAppInfo shape | PASS | (implemented) |
+| AppLookupPage | renders url input and submit button | PASS | (implemented) |
+| useAppLookup | returns fetchApp, result, and error | PASS | (implemented) |
+
+## Download icon feature (Red → Green)
+
+| Test Suite | Test Case | Red Result | Evidence |
+|------------|-----------|------------|----------|
+| downloadAppIcon | fetches iconUrl, download with .png/.jpg, default .png | FAIL | `Error: Not Implemented` at iconDownload.js:7 |
+| AppLookupPage | when result present, icon has download affordance | FAIL | expected null (no button/link with download) |
+| AppLookupPage | clicking icon triggers downloadAppIcon(iconUrl, name) | FAIL | Unable to find button with name /download/i |
+
+After Green phase: all above pass (utility implemented, icon wrapped in button with title/aria-label, click calls downloadAppIcon).
 
 ## Summary
 
-- Backend: 5 tests failed (stubs throw "Not Implemented").
-- Frontend: 2 tests failed (stubs throw "Not Implemented").
+- Baseline suite: all passing.
+- Download icon: 5 tests written in Red, all passed after Green implementation.
