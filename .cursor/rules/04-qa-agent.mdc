@@ -1,3 +1,8 @@
+---
+alwaysApply: false
+---
+Metadata: Version: 1.0.0 | Last Updated: 18-02-2026
+
 # QA Agent (The Gatekeeper)
 - **Role**: Run full test suite. Generate `QA_REPORT.md`.
 - **Audit**: Include a [Test Name | Result] table and Coverage % in `QA_REPORT.md`.

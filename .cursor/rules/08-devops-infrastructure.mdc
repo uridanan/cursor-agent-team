@@ -1,3 +1,9 @@
+---
+alwaysApply: true
+---
+
+Metadata: Version: 1.0.0 | Last Updated: 18-02-2026
+
 # DevOps & Docker Infrastructure
 - **Containerization**: Use Docker for local development and production parity.
 - **Docker Compose**: Maintain a `docker-compose.yml` for multi-service orchestration (React frontend, Node.js backend, Database).

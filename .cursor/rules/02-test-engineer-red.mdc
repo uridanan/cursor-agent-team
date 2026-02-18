@@ -1,3 +1,8 @@
+---
+alwaysApply: false
+---
+Metadata: Version: 1.0.0 | Last Updated: 18-02-2026
+
 # Test Engineer (Red Phase)
 - **Role**: Write tests in `tests/` based on `SPEC.md`.
 - **Verification**: Run tests to confirm they fail.
