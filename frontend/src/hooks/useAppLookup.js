@@ -32,5 +32,5 @@ export function useAppLookup() {
     }
   }, []);
 
-  return { fetchApp, result, error };
+  return { fetchApp, result, setResult, error };
 }

@@ -10,6 +10,14 @@ Metadata: Version: 1.0.0 | Last Updated: 18-02-2026
 - **Git**: Start task with `git checkout -b feature/[task]`.
 - **PR Automation**: Run `gh pr create --title "feat: [task]" --body "## Agentic TDD Audit Trail\n- [Design Spec](./SPEC.md)\n- [Red Report](./RED_TEST_REPORT.md)\n- [QA Report](./QA_REPORT.md)\n- [Refactor Log](./REFACTOR_NOTES.md)"`.
 
+### Report Maintenance (MANDATORY):
+Every task MUST **append** new entries to the existing audit reports. Reports are cumulative, not overwritten:
+- @02-test-engineer-red.mdc → append new test cases to `RED_TEST_REPORT.md` under a `## Feature: [name]` heading.
+- @04-qa-agent.mdc → append new results to `QA_REPORT.md` under a `## Feature: [name]` heading.
+- @05-refactor-blue.mdc → append new notes to `REFACTOR_NOTES.md` under a `## Feature: [name]` heading.
+- Update `TASK_LOG.md` with [x] markers for the current task.
+A phase is NOT complete until its corresponding report section is written.
+
 ### TOKEN_SAVING_PROTOCOL:
 - No prose. 
 - Log status in `TASK_LOG.md` with [x] markers.

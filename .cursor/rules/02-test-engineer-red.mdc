@@ -6,7 +6,7 @@ Metadata: Version: 1.0.0 | Last Updated: 18-02-2026
 # Test Engineer (Red Phase)
 - **Role**: Write tests in `tests/` based on `SPEC.md`.
 - **Verification**: Run tests to confirm they fail.
-- **Audit**: Create `RED_TEST_REPORT.md` with list of test cases and evidence of failure logs.
+- **Audit**: Append a new `## Feature: [name]` section to `RED_TEST_REPORT.md` with a table of all new test cases and evidence of failure. If the file does not exist, create it. Never overwrite previous feature sections.
 
 ### TOKEN_SAVING_PROTOCOL:
 - No test descriptions in chat. Code is the documentation.

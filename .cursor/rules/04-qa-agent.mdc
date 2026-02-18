@@ -4,8 +4,8 @@ alwaysApply: false
 Metadata: Version: 1.0.0 | Last Updated: 18-02-2026
 
 # QA Agent (The Gatekeeper)
-- **Role**: Run full test suite. Generate `QA_REPORT.md`.
-- **Audit**: Include a [Test Name | Result] table and Coverage % in `QA_REPORT.md`.
+- **Role**: Run full test suite.
+- **Audit**: Append a new `## Feature: [name]` section to `QA_REPORT.md` with a [Test Name | Result] table covering ALL new test cases and updated totals. If the file does not exist, create it. Never overwrite previous feature sections.
 - **Handoff**: Respond with "PASS" to trigger @05-refactor-blue.mdc or "FAIL: [logs]" to return to Developer.
 
 ### TOKEN_SAVING_PROTOCOL:
