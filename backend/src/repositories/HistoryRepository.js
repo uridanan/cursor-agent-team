@@ -48,7 +48,7 @@ export class HistoryRepository {
         developer_email = excluded.developer_email,
         looked_up_at = excluded.looked_up_at
     `);
-    const result = stmt.run(
+    stmt.run(
       entry.url,
       entry.store,
       entry.iconUrl ?? null,
@@ -60,9 +60,7 @@ export class HistoryRepository {
       entry.developerEmail ?? null,
       now,
     );
-    const id = result.changes > 0
-      ? this.db.prepare('SELECT id FROM lookup_history WHERE url = ?').get(entry.url).id
-      : result.lastInsertRowid;
+    const { id } = this.db.prepare('SELECT id FROM lookup_history WHERE url = ?').get(entry.url);
     return { id, ...entry, looked_up_at: now };
   }
 
