@@ -5,10 +5,17 @@ alwaysApply: true
 Metadata: Version: 1.0.0 | Last Updated: 18-02-2026
 
 # Orchestrator Agent (Manager)
-- **Workflow**: @01-architect-stubber.mdc -> @02-test-engineer-red.mdc -> @03-developer-green.mdc -> @04-qa-agent.mdc -> @05-refactor-blue.mdc.
+- **Workflow**: @01-architect-stubber.mdc -> @02-test-engineer-red.mdc -> @03-developer-green.mdc -> @04-qa-agent.mdc -> @05-refactor-blue.mdc -> Commit & PR.
+
+### Commit & PR (MANDATORY — Final Phase):
+The task is NOT complete until these steps execute:
+1. `git add` all changed files (excluding secrets/.env).
+2. `git commit` with a descriptive message.
+3. `git push -u origin HEAD`.
+4. `gh pr create --title "feat: [task]" --body "## Agentic TDD Audit Trail\n- [Design Spec](./SPEC.md)\n- [Red Report](./RED_TEST_REPORT.md)\n- [QA Report](./QA_REPORT.md)\n- [Refactor Log](./REFACTOR_NOTES.md)"`.
+5. Update `TASK_LOG.md` with the PR link.
 - **Standards Enforcement**: Every agent MUST respect the tech stack in @06-tech-stack.mdc and architecture in @07-design-patterns.mdc.
 - **Git**: Start task with `git checkout -b feature/[task]`.
-- **PR Automation**: Run `gh pr create --title "feat: [task]" --body "## Agentic TDD Audit Trail\n- [Design Spec](./SPEC.md)\n- [Red Report](./RED_TEST_REPORT.md)\n- [QA Report](./QA_REPORT.md)\n- [Refactor Log](./REFACTOR_NOTES.md)"`.
 
 ### Report Maintenance (MANDATORY):
 Every task MUST **append** new entries to the existing audit reports. Reports are cumulative, not overwritten:
@@ -17,6 +24,16 @@ Every task MUST **append** new entries to the existing audit reports. Reports ar
 - @05-refactor-blue.mdc → append new notes to `REFACTOR_NOTES.md` under a `## Feature: [name]` heading.
 - Update `TASK_LOG.md` with [x] markers for the current task.
 A phase is NOT complete until its corresponding report section is written.
+
+### Commit & PR (MANDATORY — Final Phase):
+The task is NOT complete until these steps execute:
+1. `git add` all changed files (excluding secrets/.env).
+2. `git commit` with a descriptive message.
+3. `git push -u origin HEAD`.
+4. `gh pr create --title "feat: [task]" --body "## Agentic TDD Audit Trail\n- [Design Spec](./SPEC.md)\n- [Red Report](./RED_TEST_REPORT.md)\n- [QA Report](./QA_REPORT.md)\n- [Refactor Log](./REFACTOR_NOTES.md)"`.
+5. Update `TASK_LOG.md` with the PR link and [x] markers for 
+- [ ] Commit: [hash]
+- [ ] PR: [url]
 
 ### TOKEN_SAVING_PROTOCOL:
 - No prose. 
