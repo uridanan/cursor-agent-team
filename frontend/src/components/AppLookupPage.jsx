@@ -1,14 +1,34 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useAppLookup } from '../hooks/useAppLookup';
+import { useHistory } from '../hooks/useHistory';
 import { downloadAppIcon } from '../utils/iconDownload';
+import { HistoryPanel } from './HistoryPanel';
 
 export function AppLookupPage() {
-  const { fetchApp, result, error } = useAppLookup();
+  const { fetchApp, result, setResult, error } = useAppLookup();
+  const { history, refresh, removeEntry, clearAll } = useHistory();
   const [url, setUrl] = useState('');
 
-  function handleSubmit(e) {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    if (url.trim()) fetchApp(url.trim());
+    if (url.trim()) {
+      fetchApp(url.trim()).then(() => refresh());
+    }
+  }, [url, fetchApp, refresh]);
+
+  function handleHistorySelect(entry) {
+    setResult({
+      iconUrl: entry.icon_url,
+      name: entry.name,
+      bundleId: entry.bundle_id,
+      shortDescription: entry.short_description,
+      developer: {
+        name: entry.developer_name,
+        website: entry.developer_website,
+        email: entry.developer_email,
+      },
+    });
+    setUrl(entry.url);
   }
 
   return (
@@ -62,6 +82,7 @@ export function AppLookupPage() {
           </div>
         </article>
       )}
+      <HistoryPanel history={history} onSelect={handleHistorySelect} onRemove={removeEntry} onClear={clearAll} />
     </div>
   );
 }
